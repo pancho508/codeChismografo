@@ -4,6 +4,7 @@
   "description": "A game whose members produce a question and others answer in hopes to shed light on a certain topic.",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon ./server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/pancho508/codeChismografo/issues"
   },
-  "homepage": "https://github.com/pancho508/codeChismografo#readme"
+  "homepage": "https://github.com/pancho508/codeChismografo#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
 }
