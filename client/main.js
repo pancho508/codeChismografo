@@ -2,13 +2,14 @@ var app = new Vue({
     el: "#app",
     data: {
       msg: "This should be showing",
+      fvalue: "",
+      lvalue: ""
     },
-    method: {
-      onSubmit: (e) => {
-        e.preventDefault()
-        console.log('this is the event pancho ', e)
+    methods: {
+      onSubmit: function (e) {
+        console.log("first name -->", this.fvalue)
+        console.log("last name -->", this.lvalue)
+        console.log('this is the event pancho ', e.target.fname.value)
       }
     }
   });
-
-console.log("app", app)  

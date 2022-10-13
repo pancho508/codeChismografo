@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>codeChismografo</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link href="main.css" rel="stylesheet">
   </head>
   <body>
     <h1>Create User</h1>
 
     <div id="app">
-      <form  v-on:submit.prevent="onSubmit" >
+      <form @submit.prevent="onSubmit">
         <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname" value="pancho"><br>
+        <input type="text" id="fname" name="fname" v-model="fvalue"><br>
         <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" name="lname" value="DelRancho"><br><br>
+        <input type="text" id="lname" name="lname" v-model="lvalue"><br><br>
         <input type="submit" value="Submit">
       </form>
       
       <h1>{{msg}}</h1>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="main.js"></script>
-    <link href="main.css" rel="stylesheet">
   </body>
 </html>
