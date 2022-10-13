@@ -4,7 +4,7 @@
   "description": "A game whose members produce a question and others answer in hopes to shed light on a certain topic.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./server/index.js",
+    "dev": "nodemon -r dotenv/config ./server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +19,10 @@
   "homepage": "https://github.com/pancho508/codeChismografo#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "neo4j-driver": "^5.1.0",
     "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
   }
 }

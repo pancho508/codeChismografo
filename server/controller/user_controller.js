@@ -1,5 +1,5 @@
 const userModel = require("../model/user_model.js")
-console.log("3. this is the userModel", userModel)
+// console.log("3. this is the userModel", userModel)
 
 exports.userCreate = (req, res) => {
     console.log("a. userCreate controller", req.body)
