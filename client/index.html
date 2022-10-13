@@ -7,9 +7,17 @@
     <title>codeChismografo</title>
   </head>
   <body>
-    <h1>Hello Pancho</h1>
+    <h1>Create User</h1>
 
     <div id="app">
+      <form  v-on:submit.prevent="onSubmit" >
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" value="pancho"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" value="DelRancho"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+      
       <h1>{{msg}}</h1>
     </div>
 

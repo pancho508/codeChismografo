@@ -3,8 +3,12 @@ const app = express()
 
 app.use(express.static('./client'))
 
-app.get('/hello', function (req, res) {
-  res.send('Hello Pancho Del Rancho')
+app.get('/user', function (req, res) {
+  res.send('user get')
+})
+
+app.post('/user', function (req, res) {
+  res.send('user post')
 })
 
 app.listen(3333, (err) => {
