@@ -1,0 +1,33 @@
+User
+    name: Pancho
+    email: pancho@del.rancho
+    password: 12345
+    totalScore: 22
+    sprintScore: 8
+    validated: true
+    fingerPrint: {...}
+
+- answerd { try: [false, true, true] } -> 
+- asked ->
+
+Quetion
+    text: what is html
+    imageURL:  google.com/blah.jpg
+    answers: [
+        'html is hypertext markup language',
+        'html is a form of taco',
+        'html is salsa',
+        'htmle is a color',
+    ]
+    topic: ['browser', 'front-end']
+    article: 'stackoverflow.com/html'
+    like: ['pancho', 'maria'] // Im not sure about this, I think they could just be a relationship
+    dislike: ['alice'] 
+
+""USER"" - said ->
+
+Comment
+    text: HTML is a markup language that web browsers use to ...
+    like: ['pancho', 'maria'] // Rel disliked_by ???
+    dislike: ['alice'] 
+
