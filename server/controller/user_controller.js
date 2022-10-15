@@ -40,5 +40,10 @@ exports.userEdit = (req, res) => {
 exports.userDelete = (req, res) => {
     console.log("a. userDelete controller", req.body)
     userModel.userDelete(req.body)
-    res.end("userDelete")
+        .then(()=> {
+            res.end("userDelete")
+        })
+        .catch(error => {
+            throw error
+        })
 }

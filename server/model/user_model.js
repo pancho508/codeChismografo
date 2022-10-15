@@ -35,8 +35,6 @@ exports.usersGet = (userObj) => {
         return resArr
       })
 
-
-
 }
 
 exports.userEdit = (userObj) => {
@@ -47,7 +45,14 @@ exports.userEdit = (userObj) => {
 }
 
 exports.userDelete = (userObj) => {
-    console.log("b. userDelete MODEL", userObj)
-    // Ten cuidado si usas el nombre como unico tendras que reflejar eso en el schema
-    // uuid una buena idea?
+  console.log("b. userDelete MODEL", userObj)
+  const session = ormSession()
+  return session
+    .run('MATCH (n: User {email: $email}) DELETE n', userObj)
+    .then((result) => {
+      console.log("user deleted", result)
+    })
+    .then(() => {
+      session.close()
+    })
 }
