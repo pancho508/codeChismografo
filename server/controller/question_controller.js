@@ -26,7 +26,7 @@ exports.questionsGet = (req, res) => {
 }
 
 exports.questionEdit = (req, res) => {
-    console.log("a. questionEdit controller", req.body)
+    console.log("a. questionEdit controller ---", req.body)
     questionModel.questionEdit(req.body)
         .then(() => {
             res.end("questionEdit")
