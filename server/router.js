@@ -1,6 +1,8 @@
 const express = require('express')
 const userController = require("./controller/user_controller.js");
 const questionController = require("./controller/question_controller.js");
+const commentController = require("./controller/comment_controller.js");
+
 // console.log('2. este es el userController', userController)
 
 const router = express.Router()
@@ -13,8 +15,12 @@ router.delete('/user', userController.userDelete)
 router.post('/question', questionController.questionCreate)
 router.get('/question', questionController.questionsGet)     
 router.put('/question', questionController.questionEdit)     
-router.delete('/question', questionController.questionDelete)     
+router.delete('/question', questionController.questionDelete) 
 
+router.post('/comment', commentController.commentCreate)
+router.get('/comment', commentController.commentsGet)     
+router.put('/comment', commentController.commentEdit)     
+router.delete('/comment', commentController.commentDelete)  
 
 router.all('*', (req, res, next) => {
 const error = new Error('No matching route found')

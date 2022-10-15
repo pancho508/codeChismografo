@@ -1,7 +1,6 @@
 const uuid = require('uuid')
 const ormSession = require("../db/index.js")
 
-console.log('4. this is the orm that model sees')
 exports.questionCreate = (questionObj) => {
     console.log("b. questionCreate MODEL", questionObj)
     const id = uuid.v4()
