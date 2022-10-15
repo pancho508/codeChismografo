@@ -4,23 +4,39 @@ console.log('4. this is the orm that model sees')
 exports.userCreate = (userObj) => {
     console.log("b. userCreate MODEL", userObj)
     //convierte este query a que inserte el usuario
-    ormSession
-      .run('MATCH (n:COALESCED) RETURN n LIMIT 25')
-      .then(result => {
-        for(let i = 0; i < result.records.length; i++){
-            console.log('result', result.records[i]._fields[0])
-        }
-      })
-      .catch(error => {
-        console.log(error)
-      })
-      .then(() => ormSession.close())
+    const session = ormSession()
+    return session
+      .run('CREATE (n:User {name: $name, email: $email, password: $password, totalScore: $totalScore, sprintScore: $sprintScore, validated: $validated})', userObj)
+      .then(() => session.close())
 }
 
 exports.usersGet = (userObj) => {
     console.log("b. usersGet MODEL", userObj)
-    // aqui tenemos que hacer un query para que agrarremos todos los usuarios 
-    // no creo que sea util horita pero despues del mvp sera usado 
+    // const rxSession = ormSession.createRxSession()
+    // return rxSession
+    //   .run('MATCH (a: User) return a')
+    //   .records()
+    //   .pipe(map(record => record.get('name')))
+    //   .then(() => ormSession.close())
+    const session = ormSession()
+    return session
+      .run('MATCH (a: User) return a')
+      .then((result)=>{
+        console.log('this is the result ', result.records.length)
+        resArr = []
+        result.records.forEach(record => {
+          resArr.push(record.get('a').properties)
+        })
+        console.log('its an async issue', resArr)
+        return resArr
+      })
+      .then((resArr) => {
+        session.close()
+        return resArr
+      })
+
+
+
 }
 
 exports.userEdit = (userObj) => {
