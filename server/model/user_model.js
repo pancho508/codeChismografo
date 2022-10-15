@@ -6,7 +6,14 @@ exports.userCreate = (userObj) => {
     //convierte este query a que inserte el usuario
     const session = ormSession()
     return session
-      .run('CREATE (n:User {name: $name, email: $email, password: $password, totalScore: $totalScore, sprintScore: $sprintScore, validated: $validated})', userObj)
+      .run(`CREATE (n: User {
+        name: $name, 
+        email: $email, 
+        password: $password, 
+        totalScore: $totalScore, 
+        sprintScore: $sprintScore, 
+        validated: $validated
+      })`, userObj)
       .then(() => session.close())
 }
 
@@ -38,10 +45,24 @@ exports.usersGet = (userObj) => {
 }
 
 exports.userEdit = (userObj) => {
-    console.log("b. userEdit MODEL", userObj)
-    // Ten cuidado si usas el nombre como unico tendras que reflejar eso en el schema
-    // uuid una buena idea?
-
+  console.log("b. userEdit MODEL", userObj)
+  // Ten cuidado si usas el nombre como unico tendras que reflejar eso en el schema
+  // uuid una buena idea?
+  const session = ormSession()
+  return session
+    .run(`MATCH (n: User {email: $email})
+          SET n.name = $name
+          SET n.password = $password
+          SET n.totalScore = $totalScore
+          SET n.sprintScore = $sprintScore
+          SET n.validated = $validated
+          RETURN n`, userObj)
+    .then((result) => {
+      console.log("user edited", result)
+    })
+    .then(() => {
+      session.close()
+    })
 }
 
 exports.userDelete = (userObj) => {
