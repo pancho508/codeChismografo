@@ -1,12 +1,15 @@
+const uuid = require('uuid')
 const ormSession = require("../db/index.js")
 
 console.log('4. this is the orm that model sees')
 exports.userCreate = (userObj) => {
     console.log("b. userCreate MODEL", userObj)
     //convierte este query a que inserte el usuario
+    const id = uuid.v4()
     const session = ormSession()
     return session
       .run(`CREATE (n: User {
+        uuid: "${id}",
         name: $name, 
         email: $email, 
         password: $password, 
@@ -50,8 +53,9 @@ exports.userEdit = (userObj) => {
   // uuid una buena idea?
   const session = ormSession()
   return session
-    .run(`MATCH (n: User {email: $email})
+    .run(`MATCH (n: User {uuid: $uuid})
           SET n.name = $name
+          SET n.email = $email
           SET n.password = $password
           SET n.totalScore = $totalScore
           SET n.sprintScore = $sprintScore
@@ -69,7 +73,7 @@ exports.userDelete = (userObj) => {
   console.log("b. userDelete MODEL", userObj)
   const session = ormSession()
   return session
-    .run('MATCH (n: User {email: $email}) DELETE n', userObj)
+    .run('MATCH (n: User {uuid: $uuid}) DELETE n', userObj)
     .then((result) => {
       console.log("user deleted", result)
     })
