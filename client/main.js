@@ -1,23 +1,19 @@
-var app = new Vue({
-    el: "#app",
-    data: {
-      msg: "This should be showing",
-      nameVal: "",
-      emailVal: "",
-      passVal: "",
-    },
-    methods: {
-      onSubmit: function (e) {
-        axios.post('/user-management/user', {
-          name: this.nameVal,
-          email: this.emailVal,
-          password: this.passVal,
-        })
-        .then((response) => {
-          console.log("me mando esto el servidor", response);
-        }, (error) => {
-          console.log("ohh no Pancho un error",error);
-        });
-      }
+const vueFunc = Vue.createApp({
+  data() {
+    return {
+    //   loginPage: false,
+    //   createPage: false,
+    //   questionPage: false,
+    //   homePage: true,
+        currentPage: 'homePage'
     }
-  });
+  },
+  methods: {
+    //loginpage createPage questionPage homePage
+    changePage(page) {
+        this.currentPage = page
+    }
+  }
+});
+
+vueFunc.mount('#app');

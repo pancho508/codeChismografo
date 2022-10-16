@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>codeChismografo</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js" integrity="sha512-bHeT+z+n8rh9CKrSrbyfbINxu7gsBmSHlDCb3gUF1BjmjDzKhoKspyB71k0CIRBSjE5IVQiMMVBgCWjF60qsvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link href="main.css" rel="stylesheet">
-  </head>
-  <body>
-    <h1>Create User</h1>
 
-    <div id="app">
-      <form @submit.prevent="onSubmit">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" v-model="nameVal"><br>
-        <label for="email">E-mail:</label><br>
-        <input type="text" id="email" name="email" v-model="emailVal"><br><br>
-        <label for="password">Password:</label><br>
-        <input type="text" id="password" name="password" v-model="passVal"><br><br>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>codeChismografo</title>
 
-        <input type="submit" value="Submit">
-      </form>
-      
-      <h1>{{msg}}</h1>
-    </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"
+    integrity="sha512-bHeT+z+n8rh9CKrSrbyfbINxu7gsBmSHlDCb3gUF1BjmjDzKhoKspyB71k0CIRBSjE5IVQiMMVBgCWjF60qsvA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="main.js"></script>
-  </body>
+  <link href="main.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="app">
+
+    <loginComponent id="login" v-if="true"></loginComponent>
+
+  </div>
+
+  <script src="./createUser.js"></script>
+  <script src="./login.js"></script>
+  <script src="./home.js"></script>
+  <script src="./question.js"></script>
+  <script src="./main.js"></script>
+</body>
+
 </html>
