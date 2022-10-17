@@ -15,6 +15,7 @@ class App extends React.Component {
         this.setUser = this.setUser.bind(this)
         this.singUp = this.singUp.bind(this)
         this.switchLoginSingUp = this.switchLoginSingUp.bind(this)
+        this.renderSwitch = this.renderSwitch.bind(this)
 
     }
     changePage(pageNum){
@@ -69,19 +70,26 @@ class App extends React.Component {
             });
     }
     switchLoginSingUp(num){
-        console.log('in switchLoginSingUp', num)
         this.setState({
             login_signUp: num
         })
     }
-
+    renderSwitch(loc){
+        switch(loc){
+            case 0:
+                return <LoginSignUp singUp={this.singUp} login_signUp={this.state.login_signUp} switchLoginSingUp={this.switchLoginSingUp}/>
+            case 1:
+                return <Home qArr={this.state.qArr} onQuestionClick={this.onQuestionClick}/>
+            case 2:
+                return <Question question={this.state.question} />    
+        }
+    }
     render(){
+
         return(
             <div>
                 <Header user={this.state.user} />
-                { this.state.page === 0 ? <LoginSignUp singUp={this.singUp} login_signUp={this.state.login_signUp} switchLoginSingUp={this.switchLoginSingUp}/> : <div></div> }
-                { this.state.page === 1 ? <Home qArr={this.state.qArr} onQuestionClick={this.onQuestionClick}/> : <div></div> }
-                { this.state.page === 2 ? <Question question={this.state.question} /> : <div></div> }
+                {this.renderSwitch(this.state.page)}
                 <Footer />
             </div>
         )

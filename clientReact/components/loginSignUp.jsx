@@ -28,6 +28,5 @@ var LoginSignUp = (props) => (
                 </form>
             </div>
         }
-
     </div>
 )
