@@ -8,9 +8,9 @@ var LoginSignUp = (props) => (
             props.login_signUp === 0 ?
             <div>
                 <form className="login" onSubmit={(e) => {}}>
-                    <label for="email">E-mail:</label><br/>
+                    <label >E-mail:</label><br/>
                     <input type="text" id="email" name="email" /><br/><br/>
-                    <label for="password">Password:</label><br/>
+                    <label >Password:</label><br/>
                     <input type="text" id="password" name="password" /><br/><br/>
                     <input type="submit" value="Submit" />
                 </form>
@@ -18,11 +18,11 @@ var LoginSignUp = (props) => (
             :
             <div>
                 <form className="login" onSubmit={(e) => {props.singUp(e)}}>
-                    <label for="name">Name:</label><br/>
+                    <label >Name:</label><br/>
                     <input type="text" id="name" name="name" /><br/>
-                    <label for="email">E-mail:</label><br/>
+                    <label >E-mail:</label><br/>
                     <input type="text" id="email" name="email" /><br/><br/>
-                    <label for="password">Password:</label><br/>
+                    <label >Password:</label><br/>
                     <input type="text" id="password" name="password" /><br/><br/>
                     <input type="submit" value="Submit" />
                 </form>
