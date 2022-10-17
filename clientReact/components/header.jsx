@@ -9,6 +9,13 @@ var Header = (props) => (
                 <p>Welcome, {props.user.name}</p>
             </div> : <div></div>
         }
-        <a href="/login" className="loginButton active">IDK yet</a>
+        {
+            props.user ?
+            <a className="loginButton active">Sign Out</a> :
+            <div>
+                <a className="loginButton active">Log In</a> |
+                <a className="loginButton active">  createAccount</a>
+            </div>
+        }
     </div>
 )

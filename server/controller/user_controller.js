@@ -4,14 +4,12 @@ const userModel = require("../model/user_model.js")
 exports.userCreate = (req, res) => {
     const userObj = {
         ...req.body, 
-        totalScore: 0,
         sprintScore: 0,
+        totalScore: 0,
         validated: false,
     }
-    console.log("a. userCreate controller", userObj)
     userModel.userCreate(userObj)
      .then(empty => {
-        console.log('got this from the modal in then block', empty)
         res.end(JSON.stringify(userObj))
       })
       .catch(error => {
@@ -20,7 +18,6 @@ exports.userCreate = (req, res) => {
 }
 
 exports.usersGet = (req, res) => {
-    console.log(" a. usersGet controller", req.body)
     userModel.usersGet(req.body)
       .then(data => {
         // console.log('data in controller ===>', data)
@@ -33,7 +30,6 @@ exports.usersGet = (req, res) => {
 }
 
 exports.userEdit = (req, res) => {
-    console.log("a. userEdit controller", req.body)
     userModel.userEdit(req.body)
         .then(() => {
             res.end("userEdit")
@@ -44,7 +40,6 @@ exports.userEdit = (req, res) => {
 }
 
 exports.userDelete = (req, res) => {
-    console.log("a. userDelete controller", req.body)
     userModel.userDelete(req.body)
         .then(()=> {
             res.end("userDelete")
