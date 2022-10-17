@@ -70,7 +70,8 @@
   box-shadow: 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
     22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
     100px 100px 80px rgba(0, 0, 0, 0.07);
-  margin: auto;
+  margin-top: 5vh;
+  margin-left: 25vw;
 }
 
 .login {
@@ -86,11 +87,17 @@ label {
 }
 
 input {
-  width: 30%;
-  height: 5%;
+  width: 35%;
+  height: 9%;
 }
 
 .centerH1 {
   text-align: center;
   font-size: 35px;
+}
+
+.centerFooter {
+  text-align: center;
+  font-size: 27px;
+  display: block;
 }

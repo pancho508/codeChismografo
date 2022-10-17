@@ -1,5 +1,5 @@
 var Footer = () => (
     <div className="footer">
-        <h1>This is footer</h1>
+        <a href="https://github.com/pancho508/codeChismografo" className="centerFooter">Code on Github</a>
     </div>
 )
