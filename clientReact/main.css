@@ -4,6 +4,15 @@
   padding: 15px 10px;
 }
 
+.footer {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 15px 10px;
+  position: fixed;
+  bottom: 0; 
+  width: 100%;
+}
+
 .loginButton {
   float: right !important;
 }
