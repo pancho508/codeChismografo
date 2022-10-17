@@ -1,6 +1,6 @@
 class LoginSignUp extends React.Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             modal: 0
         }
@@ -12,6 +12,7 @@ class LoginSignUp extends React.Component {
         })
     }
     render(){
+        console.log('props in loginSignup are ', this.props)
         return(
             <div className="box">
                 <h1 className="centerH1">
@@ -21,7 +22,7 @@ class LoginSignUp extends React.Component {
                 {
                     this.state.modal === 0 ?
                     <div>
-                        <form className="login" action="">
+                        <form className="login" onSubmit={(e) => {}}>
                             <label for="email">E-mail:</label><br/>
                             <input type="text" id="email" name="email" /><br/><br/>
                             <label for="password">Password:</label><br/>
@@ -31,13 +32,11 @@ class LoginSignUp extends React.Component {
                     </div>
                     :
                     <div>
-                        <form className="login" action="">
+                        <form className="login" onSubmit={(e) => {this.props.singUp(e)}}>
                             <label for="name">Name:</label><br/>
                             <input type="text" id="name" name="name" /><br/>
                             <label for="email">E-mail:</label><br/>
                             <input type="text" id="email" name="email" /><br/><br/>
-                            <label for="password">Password:</label><br/>
-                            <input type="text" id="password" name="password" /><br/><br/>
                             <label for="password">Password:</label><br/>
                             <input type="text" id="password" name="password" /><br/><br/>
                             <input type="submit" value="Submit" />

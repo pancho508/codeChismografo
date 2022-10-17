@@ -17,7 +17,10 @@ exports.userCreate = (userObj) => {
         sprintScore: $sprintScore, 
         validated: $validated
       })`, userObj)
-      .then(() => session.close())
+      .then((data ) => {
+        session.close()
+        return data
+      })
 }
 
 exports.usersGet = (userObj) => {
