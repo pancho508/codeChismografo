@@ -16,7 +16,6 @@ class App extends React.Component {
         this.singUp = this.singUp.bind(this)
         this.switchLoginSingUp = this.switchLoginSingUp.bind(this)
         this.renderSwitch = this.renderSwitch.bind(this)
-
     }
     changePage(pageNum){
         this.setState({
@@ -34,11 +33,24 @@ class App extends React.Component {
                 console.error('pancho you go an error', err)
             })
     }
-    login(){
+    login(e){
         //should hit the server and query the db
         //Auth the user
         //use JWT for session
         //redirect to homepage
+        e.preventDefault()
+        const userObj = {
+            email: e.target.email.value,
+            password: e.target.password.value
+        }
+        axios.get('/user-management/userLogin', userObj)
+        .then((response) => {
+          this.setUser(response.data)
+          this.getQuestions()
+          this.changePage(1)
+        }, (error) => {
+          console.log("ohh no Pancho un error", error);
+        });
     }
     onQuestionClick(e, qObj){
         console.log('onQuestionClick invoked', e, qObj)
@@ -77,7 +89,7 @@ class App extends React.Component {
     renderSwitch(loc){
         switch(loc){
             case 0:
-                return <LoginSignUp singUp={this.singUp} login_signUp={this.state.login_signUp} switchLoginSingUp={this.switchLoginSingUp}/>
+                return <LoginSignUp singUp={this.singUp} login={this.login} login_signUp={this.state.login_signUp} switchLoginSingUp={this.switchLoginSingUp}/>
             case 1:
                 return <Home qArr={this.state.qArr} onQuestionClick={this.onQuestionClick}/>
             case 2:

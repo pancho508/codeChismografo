@@ -45,6 +45,23 @@ exports.usersGet = (userObj) => {
 
 }
 
+exports.userLogin = (userObj) => {
+  const session = ormSession()
+  return session
+    .run(`MATCH (n: User {email: $email}) RETURN n LIMIT 1`, userObj) // LIMIT 1 here is not good, should add unique on email
+    .then((result)=>{
+      resArr = []
+      result.records.forEach(record => {
+        resArr.push(record.get('n').properties)
+      })
+      return resArr
+    })
+    .then((resArr) => {
+      session.close()
+      return resArr
+    })
+}
+
 exports.userEdit = (userObj) => {
   // Ten cuidado si usas el nombre como unico tendras que reflejar eso en el schema
   // uuid una buena idea?

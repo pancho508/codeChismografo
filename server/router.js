@@ -8,7 +8,8 @@ const commentController = require("./controller/comment_controller.js");
 const router = express.Router()
 
 router.post('/user', userController.userCreate)
-router.get('/user', userController.usersGet)     
+router.get('/user', userController.usersGet)
+router.get('/userLogin', userController.userLogin)
 router.put('/user', userController.userEdit)     
 router.delete('/user', userController.userDelete)     
 

@@ -25,8 +25,24 @@ exports.usersGet = (req, res) => {
       })
       .catch(error => {
         throw error
-      })
-    
+      })  
+}
+
+exports.userLogin = (req, res) => {
+  console.log('userLogin body', req.body)
+  userModel.userLogin(req.body)
+    .then(data => {
+      // check that the password maches the one given 
+      console.log(req.body.password, data)
+      if(req.body.password === data[0].password){
+        res.end(JSON.stringify(data))
+      } else {
+        res.end('no login')
+      }
+    })
+    .catch(error => {
+      throw error
+    })  
 }
 
 exports.userEdit = (req, res) => {

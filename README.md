@@ -8,6 +8,8 @@ Start with users and set up simple CRUD operations with MVC
 ### Client- vuejs
 
     - Users: 
+        TODO ----------------------------------------------------------------------
+        DONE ----------------------------------------------------------------------
         * Header and Footer on all 
             - Header => Home, CreateQuestion, Logout/login/create
             - Footer => logo, link to github
@@ -38,19 +40,31 @@ Start with users and set up simple CRUD operations with MVC
         
 
     - Questions: 
+        TODO ----------------------------------------------------------------------
+        DONE ----------------------------------------------------------------------
     - Comments: 
-
+        TODO ----------------------------------------------------------------------
+        DONE ----------------------------------------------------------------------
 
 ### Server- express
 Needs; Router, auth(simple), MVC start it up first, 
+    TODO 
+        - Need to start building up authentication
+            - I could just create a MW function to check the end point with a JWT
 
     - /Users
+        TODO ----------------------------------------------------------------------
+        DONE ----------------------------------------------------------------------
         -- /create
         -- /update
         -- /put
         -- /delelte
-    - Questions: 
-    - Comments: 
+    - Questions:
+        TODO ----------------------------------------------------------------------
+        DONE --------------------------------------------------------------------- 
+    - Comments:
+        TODO ----------------------------------------------------------------------
+        DONE --------------------------------------------------------------------- 
 
 ### DB- neo4j 
 ORM; neo4j-driver

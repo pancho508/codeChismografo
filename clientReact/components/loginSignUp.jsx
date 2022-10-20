@@ -7,7 +7,7 @@ var LoginSignUp = (props) => (
         {
             props.login_signUp === 0 ?
             <div>
-                <form className="login" onSubmit={(e) => {}}>
+                <form className="login" onSubmit={(e) => {props.login(e)}}>
                     <label >E-mail:</label><br/>
                     <input type="text" id="email" name="email" /><br/><br/>
                     <label >Password:</label><br/>
