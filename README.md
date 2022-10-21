@@ -1,56 +1,72 @@
 # codeChismografo
 A game whose members produce a question and others answer in hopes to shed light on a certain topic.
 
+index.js -> router.js
+    --db
+        --model
+    --controller
+
+    --config
+    --middleware(jwt)
+    --modules
+        --health
+    --services
+    --utils
+    --validation
 
 ## Things to do
 Start with users and set up simple CRUD operations with MVC
 
 ### Client- vuejs
+        [] Bootstrap / CSS 
+            - add bootstrap for all page components
+            - Login/CreateAccount , Home , Question, Question Resolution , Comments
+            - (maybe we could add random background color -! high on white tint) )
+        [x] Header and Footer on all 
+            - Header => Home, CreateQuestion, Logout/login/create
+            - Footer => logo, link to github
+            - Should appear on all components
+        [x] Home Page
+            -Overview of Question feed each question is going to be a box with the text question only
 
     - Users: 
         TODO ----------------------------------------------------------------------
         DONE ----------------------------------------------------------------------
-        * Header and Footer on all 
-            - Header => Home, CreateQuestion, Logout/login/create
-            - Footer => logo, link to github
-            - Should appear on all components
-        * Create user page
+        [x] Create user page
             - INPUT => name, email, password 
             - FORM
-        * Log in page (part of CreatUser Page)
+        [x] Log in page (should also have CreatUser Page)
             - INPUT => email, password
-            - FORM
-        * Home Page
-            -Overview of Question feed each question is going to be a box with the text question only(maybe we could add random background color(high on white tint) )
-        * Create Question Page
+            - FORM 
+
+    - Questions: 
+        TODO ----------------------------------------------------------------------
+        DONE ----------------------------------------------------------------------
+        [x] Create Question Page
             - INPUT => topic(dropdown), text, answers, imageURL, article(optional article to more info)
-            - FORM  
-        * Question Page 
+            - FORM
+        [x] Question Page 
             - Image
             - Question Text 
             - Answers 1-4
             - Form Submit should take you to comment page
-        * Comment page
+
+    - Comments: 
+        TODO ----------------------------------------------------------------------
+        [] Comment page
             - Rate Question thumb up or down
             - Comment box 
                 -comment 1 (each has thumb up or down)
                 -comment 2 (each has thumb up or down)
                 - etc
             - AddCommentButton and NextQuestionButton
-        
-
-    - Questions: 
-        TODO ----------------------------------------------------------------------
-        DONE ----------------------------------------------------------------------
-    - Comments: 
-        TODO ----------------------------------------------------------------------
         DONE ----------------------------------------------------------------------
 
 ### Server- express
 Needs; Router, auth(simple), MVC start it up first, 
     TODO 
-        - Need to start building up authentication
-            - I could just create a MW function to check the end point with a JWT
+        [] Need to start building up authentication
+            - I could just create a MW function to check the end point with a JWT or we can just create a fun little function
 
     - /Users
         TODO ----------------------------------------------------------------------
