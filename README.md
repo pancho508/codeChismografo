@@ -19,6 +19,7 @@ Start with users and set up simple CRUD operations with MVC
 
 ### Client- vuejs
         [] Bootstrap / CSS 
+            !! Caution. Tried setting up bootstrap directly with cdn config but running into issues with non hook build. Would be wise to set up once I start native build with VueJS
             - add bootstrap for all page components
             - Login/CreateAccount , Home , Question, Question Resolution , Comments
             - (maybe we could add random background color -! high on white tint) )

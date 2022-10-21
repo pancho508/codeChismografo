@@ -3,7 +3,7 @@ class App extends React.Component {
         super()
         this.state = {
             login_signUp: 0,
-            page : 0,
+            page : 3,
             qArr : [],
             question : null,
             user: null
@@ -93,7 +93,9 @@ class App extends React.Component {
             case 1:
                 return <Home qArr={this.state.qArr} onQuestionClick={this.onQuestionClick}/>
             case 2:
-                return <Question question={this.state.question} />    
+                return <Question question={this.state.question} />
+            case 3: 
+                return <CreateQuestion />
         }
     }
     render(){

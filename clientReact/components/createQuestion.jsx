@@ -11,7 +11,6 @@ var CreateQuestion = (props) => (
             <input type="text" id="wrongAnswer2" name="wrongAnswer2" /><br/><br/>
             <label >Wrong Answer 3:</label><br/>
             <input type="text" id="wrongAnswer3" name="wrongAnswer3" /><br/><br/>
-
             <input type="submit" value="Submit" />
         </form>
     </div>
