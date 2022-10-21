@@ -28,10 +28,11 @@ Start with users and set up simple CRUD operations with MVC
             - Should appear on all components
         [x] Home Page
             -Overview of Question feed each question is going to be a box with the text question only
+        [x] CreateQuestion
+        [x] loginSignUp
+        [x] Question
 
-    - Users: 
-        TODO ----------------------------------------------------------------------
-        DONE ----------------------------------------------------------------------
+    --Users: 
         [x] Create user page
             - INPUT => name, email, password 
             - FORM
@@ -39,9 +40,9 @@ Start with users and set up simple CRUD operations with MVC
             - INPUT => email, password
             - FORM 
 
-    - Questions: 
-        TODO ----------------------------------------------------------------------
-        DONE ----------------------------------------------------------------------
+    --Questions
+        [] CreateQuestion
+        [] QuestionComments
         [x] Create Question Page
             - INPUT => topic(dropdown), text, answers, imageURL, article(optional article to more info)
             - FORM
@@ -51,8 +52,8 @@ Start with users and set up simple CRUD operations with MVC
             - Answers 1-4
             - Form Submit should take you to comment page
 
-    - Comments: 
-        TODO ----------------------------------------------------------------------
+    --Comments: 
+        [] CreateComment
         [] Comment page
             - Rate Question thumb up or down
             - Comment box 
@@ -60,7 +61,6 @@ Start with users and set up simple CRUD operations with MVC
                 -comment 2 (each has thumb up or down)
                 - etc
             - AddCommentButton and NextQuestionButton
-        DONE ----------------------------------------------------------------------
 
 ### Server- express
 Needs; Router, auth(simple), MVC start it up first, 
@@ -69,30 +69,48 @@ Needs; Router, auth(simple), MVC start it up first,
             - I could just create a MW function to check the end point with a JWT or we can just create a fun little function
 
     - /Users
-        TODO ----------------------------------------------------------------------
-        DONE ----------------------------------------------------------------------
-        -- /create
-        -- /update
-        -- /put
-        -- /delelte
+        [x] /login
+        [x] /create
+        [x] /update
+        [x] /put
+        [x] /delelte
     - Questions:
-        TODO ----------------------------------------------------------------------
-        DONE --------------------------------------------------------------------- 
+        [] /create
+        [] /update
+        [] /put
+        [] /delelte
     - Comments:
-        TODO ----------------------------------------------------------------------
-        DONE --------------------------------------------------------------------- 
+        [] /create
+        [] /update
+        [] /put
+        [] /delelte
 
 ### DB- neo4j 
 ORM; neo4j-driver
 User -asked-> Question -contains-> Comment    
 
-    - Users: 
+    - Users:
+        uuid:
         name:
         email:
         password:
         totalScore:
         sprintScrore:
         validated:
-    - Questions: 
-    - Comments: 
+
+    - Questions:
+        uuid:
+        text:
+        imageURL:
+        answers:
+        topic:
+        article:
+        like:
+        dislike:
+
+    - Comments:
+        uuid:
+        text:
+        like:
+        dislike
 
