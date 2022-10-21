@@ -43,7 +43,7 @@ Start with users and set up simple CRUD operations with MVC
 
     --Questions
         [] CreateQuestion
-            - Need create post to server 
+            - Need create post to server -addQuestion METHOD 
         [] QuestionComments
         [x] Create Question Page
             - INPUT => topic(dropdown), text, answers, imageURL, article(optional article to more info)

@@ -1,6 +1,6 @@
 var CreateQuestion = (props) => (
     <div>
-        <form className="login" onSubmit={(e) => {console.log('this is e', e)}}>
+        <form className="login" onSubmit={(e) => { props.addQuestion(e) }}>
             <label >question:</label><br/>
             <input type="text" id="question" name="question" /><br/>
             <label >Crrect Answer Here:</label><br/>

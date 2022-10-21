@@ -16,6 +16,27 @@ class App extends React.Component {
         this.singUp = this.singUp.bind(this)
         this.switchLoginSingUp = this.switchLoginSingUp.bind(this)
         this.renderSwitch = this.renderSwitch.bind(this)
+        this.addQuestion = this.addQuestion.bind(this)
+    }
+    addQuestion(e){
+        e.preventDefault()
+        var questionObj = {
+            question: e.target.question.value,
+            correctAnswer: e.target.correctAnswer.value,
+            wrongAnswer1: e.target.wrongAnswer1.value, 
+            wrongAnswer2: e.target.wrongAnswer2.value,
+            wrongAnswer3: e.target.wrongAnswer3.value
+        }
+        axios.post('/user-management/addQuestion', questionObj)
+        .then((res) => {
+            console.log('addQuestion RES =>', res)
+        })
+        .catch((error) => {
+            (error) => {
+                console.log("ohh no Pancho un error", error);
+            }
+        })
+        console.log('addQuestion questionObj=>', questionObj)
     }
     changePage(pageNum){
         this.setState({
@@ -48,7 +69,8 @@ class App extends React.Component {
           this.setUser(response.data)
           this.getQuestions()
           this.changePage(1)
-        }, (error) => {
+        })
+        .catch((error) => {
           console.log("ohh no Pancho un error", error);
         });
     }
@@ -77,9 +99,12 @@ class App extends React.Component {
               this.setUser(response.data)
               this.getQuestions()
               this.changePage(1)
-            }, (error) => {
-              console.log("ohh no Pancho un error", error);
-            });
+            })
+            .catch((error) => {
+                (error) => {
+                    console.log("ohh no Pancho un error", error);
+                }
+            })
     }
     switchLoginSingUp(num){
         this.setState({
@@ -95,7 +120,7 @@ class App extends React.Component {
             case 2:
                 return <Question question={this.state.question} />
             case 3: 
-                return <CreateQuestion />
+                return <CreateQuestion addQuestion={this.addQuestion} />
         }
     }
     render(){
