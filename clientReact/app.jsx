@@ -20,12 +20,17 @@ class App extends React.Component {
     }
     addQuestion(e){
         e.preventDefault()
+        console.log(e.target)
         var questionObj = {
             question: e.target.question.value,
             correctAnswer: e.target.correctAnswer.value,
             wrongAnswer1: e.target.wrongAnswer1.value, 
             wrongAnswer2: e.target.wrongAnswer2.value,
-            wrongAnswer3: e.target.wrongAnswer3.value
+            wrongAnswer3: e.target.wrongAnswer3.value,
+            imageURL: e.target.imageURL.value,
+            topic: e.target.topic.value,
+            articleLink: e.target.articleLink.value,
+            createdBy: this.state.user.name
         }
         axios.post('/user-management/question', questionObj)
         .then((res) => {
@@ -104,6 +109,7 @@ class App extends React.Component {
           }
         axios.post('/user-management/user', userObj)
             .then((response) => {
+              console.log('current user =>', response.data)
               this.setUser(response.data)
               this.getQuestions()
               this.changePage(1)

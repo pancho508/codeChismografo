@@ -10,6 +10,7 @@ exports.userCreate = (req, res) => {
     }
     userModel.userCreate(userObj)
      .then(empty => {
+        userObj.auth = true
         res.end(JSON.stringify(userObj))
       })
       .catch(error => {

@@ -102,13 +102,17 @@ User -asked-> Question -contains-> Comment
 
     - Questions:
         uuid:
-        text:
+        createdBy:
         imageURL:
-        answers:
         topic:
-        article:
+        articleLink:
         like:
         dislike:
+        question:
+        correctAnswer:
+        wrongAnswer1:
+        wrongAnswer2:
+        wrongAnswer3:
 
     - Comments:
         uuid:

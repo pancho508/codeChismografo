@@ -1,10 +1,21 @@
 const questionModel = require("../model/question_model.js")
+const uuid = require('uuid')
+
 // console.log("3. this is the questionModel", questionModel)
 
 exports.questionCreate = (req, res) => {
-    console.log("a. questionCreate controller DICE!!!", req.body)
-    questionModel.questionCreate(req.body)
+    const id = uuid.v4()
+    const questionObj = {
+      ...req.body,
+      like: 0,
+      dislike: 0,
+      uuid: id
+    }
+
+    console.log("a. questionCreate controller DICE!!!", questionObj)
+    questionModel.questionCreate(questionObj)
      .then(result => {
+        console.log('c. questioCreate controller then =>', result)
         res.end("questionCreate properly")
       })
       .catch(error => {

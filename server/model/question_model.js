@@ -1,22 +1,28 @@
-const uuid = require('uuid')
 const ormSession = require("../db/index.js")
 
 exports.questionCreate = (questionObj) => {
-    console.log("b. questionCreate MODEL", questionObj)
-    const id = uuid.v4()
+    console.log("b. questionCreate MODEL lookPancho =>", questionObj)
     const session = ormSession()
     return session
       .run(`CREATE (n: Question {
-        uuid: '${id}',
-        text: $text,
+        uuid: $uuid,
+        question: $question,
         imageURL:  $imageURL,
-        answers: $answers,
         topic: $topic,
-        article: $article,
+        articleLink: $articleLink,
         like: $like, 
-        dislike: $dislike 
+        dislike: $dislike,
+        createdBy: $createdBy,
+        correctAnswer: $correctAnswer,
+        wrongAnswer1: $wrongAnswer1,
+        wrongAnswer2: $wrongAnswer2,
+        wrongAnswer3: $wrongAnswer3
       })`, questionObj)
       .then(() => session.close())
+      .catch((err) => {
+        console.log('questioCreate Model ERROR => ', err)
+        return err
+      })
       //TODO - Need to crate a relationship when creating this question
 }
 
