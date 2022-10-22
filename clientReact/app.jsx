@@ -30,6 +30,8 @@ class App extends React.Component {
         axios.post('/user-management/question', questionObj)
         .then((res) => {
             console.log('addQuestion RES =>', res)
+            this.getQuestions()
+            this.changePage(1)
         })
         .catch((error) => {
             console.log("ohh no Pancho un error", error);
@@ -70,7 +72,7 @@ class App extends React.Component {
           if(response.data.auth === true){
             this.setUser(response.data)
             this.getQuestions()
-            this.changePage(3)
+            this.changePage(1)
           } else {
             alert('Login Falied')
           }
@@ -133,7 +135,7 @@ class App extends React.Component {
 
         return(
             <div>
-                <Header user={this.state.user} />
+                <Header user={this.state.user}  changePage={this.changePage}/>
                 {this.renderSwitch(this.state.page)}
                 <Footer />
             </div>

@@ -4,8 +4,16 @@ var Header = (props) => (
         {
             props.user ? 
             <div className="header-right">
-                <a className="" href="/">Home</a>
-                <a className="" href="/question">Create a Question</a>
+                <a className=""
+                    onClick={(e) => {
+                        props.changePage(1)
+                    }}
+                >Home</a>
+                <a className=""
+                    onClick={(e) => {
+                        props.changePage(3)
+                    }}
+                >Create a Question</a>
                 <p>Welcome, {props.user.name}</p>
             </div> : <div></div>
         }
