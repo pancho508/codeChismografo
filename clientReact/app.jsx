@@ -124,7 +124,7 @@ class App extends React.Component {
             case 0:
                 return <LoginSignUp singUp={this.singUp} login={this.login} login_signUp={this.state.login_signUp} switchLoginSingUp={this.switchLoginSingUp}/>
             case 1:
-                return <Home qArr={this.state.qArr} onQuestionClick={this.onQuestionClick}/>
+                return <Home key={1} qArr={this.state.qArr} onQuestionClick={this.onQuestionClick}/>
             case 2:
                 return <Question question={this.state.question} />
             case 3: 
