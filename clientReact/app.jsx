@@ -3,7 +3,7 @@ class App extends React.Component {
         super()
         this.state = {
             login_signUp: 0,
-            page : 3,
+            page : 0,
             qArr : [],
             question : null,
             user: null
@@ -27,14 +27,12 @@ class App extends React.Component {
             wrongAnswer2: e.target.wrongAnswer2.value,
             wrongAnswer3: e.target.wrongAnswer3.value
         }
-        axios.post('/user-management/addQuestion', questionObj)
+        axios.post('/user-management/question', questionObj)
         .then((res) => {
             console.log('addQuestion RES =>', res)
         })
         .catch((error) => {
-            (error) => {
-                console.log("ohh no Pancho un error", error);
-            }
+            console.log("ohh no Pancho un error", error);
         })
         console.log('addQuestion questionObj=>', questionObj)
     }
@@ -64,11 +62,19 @@ class App extends React.Component {
             email: e.target.email.value,
             password: e.target.password.value
         }
-        axios.get('/user-management/userLogin', userObj)
+        console.log('this is the userObj', typeof userObj)
+
+        axios.get('/user-management/userLogin', {params: userObj})
         .then((response) => {
-          this.setUser(response.data)
-          this.getQuestions()
-          this.changePage(1)
+          console.log('this is the current user =>', response.data)
+          if(response.data.auth === true){
+            this.setUser(response.data)
+            this.getQuestions()
+            this.changePage(3)
+          } else {
+            alert('Login Falied')
+          }
+
         })
         .catch((error) => {
           console.log("ohh no Pancho un error", error);

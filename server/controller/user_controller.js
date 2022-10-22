@@ -29,19 +29,21 @@ exports.usersGet = (req, res) => {
 }
 
 exports.userLogin = (req, res) => {
-  console.log('userLogin body', req.body)
-  userModel.userLogin(req.body)
+  console.log('userLogin look Pancho ===>', req.query)
+  userModel.userLogin(req.query)
     .then(data => {
       // check that the password maches the one given 
-      console.log(req.body.password, data)
-      if(req.body.password === data[0].password){
-        res.end(JSON.stringify(data))
+      console.log(req.query.password, " vs ", data[0].password)
+      if(req.query.password === data[0].password){
+        data[0].auth = true
+        res.end(JSON.stringify(data[0]))
       } else {
-        res.end('no login')
+        res.end(JSON.stringify({auth: false}))
       }
     })
     .catch(error => {
-      throw error
+      console.log('I dont think we get into this catch block')
+      res.end(JSON.stringify({auth: false}))
     })  
 }
 

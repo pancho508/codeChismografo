@@ -2,7 +2,7 @@ const questionModel = require("../model/question_model.js")
 // console.log("3. this is the questionModel", questionModel)
 
 exports.questionCreate = (req, res) => {
-    console.log("a. questionCreate controller", req.body)
+    console.log("a. questionCreate controller DICE!!!", req.body)
     questionModel.questionCreate(req.body)
      .then(result => {
         res.end("questionCreate properly")
