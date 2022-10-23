@@ -8,6 +8,8 @@ class App extends React.Component {
             question : null,
             user: null
         }
+        this.addQuestion = this.addQuestion.bind(this)
+        this.answerQuestion = this.answerQuestion.bind(this)
         this.changePage = this.changePage.bind(this)
         this.getQuestions = this.getQuestions.bind(this)
         this.login = this.login.bind(this)
@@ -16,7 +18,6 @@ class App extends React.Component {
         this.singUp = this.singUp.bind(this)
         this.switchLoginSingUp = this.switchLoginSingUp.bind(this)
         this.renderSwitch = this.renderSwitch.bind(this)
-        this.addQuestion = this.addQuestion.bind(this)
     }
     addQuestion(e){
         e.preventDefault()
@@ -42,6 +43,10 @@ class App extends React.Component {
             console.log("ohh no Pancho un error", error);
         })
         console.log('addQuestion questionObj=>', questionObj)
+    }
+    answerQuestion(e, uuid){
+        e.preventDefault()
+        console.log('answerQuestion e =>', e.target.chosenAnswer.value, "uuid", uuid) 
     }
     changePage(pageNum){
         this.setState({
@@ -132,7 +137,7 @@ class App extends React.Component {
             case 1:
                 return <Home key={1} qArr={this.state.qArr} onQuestionClick={this.onQuestionClick}/>
             case 2:
-                return <Question question={this.state.question} />
+                return <Question question={this.state.question} answerQuestion={this.answerQuestion} />
             case 3: 
                 return <CreateQuestion addQuestion={this.addQuestion} />
         }
