@@ -3,19 +3,26 @@ var Question = (props) => {
     if(props.question){
         return(
             <div>
-                <h1>Single Question</h1>
+                <h1>Single Question {props.question.uuid}</h1>
+                <h3>{props.question.topic}</h3>
                 <img src={props.question.imageURL}></img>
-                <h2>Question: {props.question.text}</h2>
+                <h2>Question: {props.question.question}</h2>
+                <p>by: {props.question.createdBy}</p>
                 <ul>
                     {/* we need to mix these answers up  */}
-                    <li>{props.question.answers[0]}</li>
-                    <li>{props.question.answers[1]}</li>
-                    <li>{props.question.answers[2]}</li>
-                    <li>{props.question.answers[3]}</li>
+                    <li>{props.question.correctAnswer}</li>
+                    <li>{props.question.wrongAnswer1}</li>
+                    <li>{props.question.wrongAnswer2}</li>
+                    <li>{props.question.wrongAnswer3}</li>
                 </ul>
                 <button onClick={(e) =>{ console.log('set up the ul as a form to the db to store right or wrong val') }} >Submit Answer</button>
-
-                <a href={props.question.article} >{props.question.article}</a>
+                <br />
+                <a href={props.question.articleLink} >{props.question.articleLink}</a>
+                {/* maybe these should be on answer page
+                    articleLink:
+                    like:
+                    dislike: 
+                */}
 
                 {/*  
                     WARNING!!
