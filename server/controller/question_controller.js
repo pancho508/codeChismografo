@@ -2,6 +2,17 @@ const questionModel = require("../model/question_model.js")
 const uuid = require('uuid')
 
 // console.log("3. this is the questionModel", questionModel)
+exports.answerQuestion = (req, res) => {
+  console.log('answerQuestion controller', req.body)
+  questionModel.answerQuestion(req.body)
+    .then((nada) => {
+      console.log('answerQuestion controller then', nada)
+      res.status(201).end()
+    })
+    .catch((error) => {
+      res.end(error)
+    })
+}
 
 exports.questionCreate = (req, res) => {
     const id = uuid.v4()

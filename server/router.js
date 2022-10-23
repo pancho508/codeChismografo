@@ -14,6 +14,7 @@ router.put('/user', userController.userEdit)
 router.delete('/user', userController.userDelete)     
 
 router.post('/question', questionController.questionCreate)
+router.post('/answerQuestion', questionController.answerQuestion)
 router.get('/question', questionController.questionsGet)     
 router.put('/question', questionController.questionEdit)     
 router.delete('/question', questionController.questionDelete) 

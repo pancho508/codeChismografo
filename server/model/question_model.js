@@ -1,5 +1,21 @@
 const ormSession = require("../db/index.js")
 
+exports.answerQuestion = (relObj) => {
+  console.log('answerQuestion model relObj =>', relObj)
+  const session = ormSession()
+  return session
+    .run(`
+    MATCH (u: User {uuid: $user_uuid}),
+    (q: Question {uuid: $question_uuid})
+    CREATE (u)-[:ANSWERED {correct: $correct}]->(q)
+    `, relObj)
+    .then(() => session.close())
+    .catch((err) => {
+      console.log('questioCreate Model ERROR => ', err)
+      return err
+    })
+}
+
 exports.questionCreate = (questionObj) => {
     console.log("b. questionCreate MODEL lookPancho =>", questionObj)
     const session = ormSession()

@@ -25,10 +25,6 @@ var Question = (props) => {
                         we can use the uuid on the question to query the db for the comments associated to it.
                         we add comment form. 
                         method to add and get:id comment
-                    Show 
-                        articleLink:
-                        like:
-                        dislike: 
                 */}
             </div>
         )

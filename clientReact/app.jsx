@@ -6,6 +6,7 @@ class App extends React.Component {
             page : 0,
             qArr : [],
             question : null,
+            questionResult: null,
             user: null
         }
         this.addQuestion = this.addQuestion.bind(this)
@@ -22,7 +23,6 @@ class App extends React.Component {
     }
     addQuestion(e){
         e.preventDefault()
-        console.log(e.target)
         var answerObj = [
             e.target.correctAnswer.value,
             e.target.wrongAnswer1.value,
@@ -48,13 +48,32 @@ class App extends React.Component {
             this.changePage(1)
         })
         .catch((error) => {
-            console.log("ohh no Pancho un error", error);
+            console.log("ohh no Pancho un error", error)
         })
-        console.log('addQuestion questionObj=>', questionObj)
     }
-    answerQuestion(e, uuid){
+    answerQuestion(e, question_uuid){
         e.preventDefault()
-        console.log('answerQuestion e =>', e.target.chosenAnswer.value, "uuid", uuid) 
+        //make axios poser request
+        const relObj = {
+            user_uuid: this.state.user.uuid,
+            question_uuid: question_uuid,
+            correct: e.target.chosenAnswer.value === "correctAnswer" ? true : false
+        }
+        axios.post('/user-management/answerQuestion', relObj)
+            .then((res) => {
+                console.log('this is the res', res)
+                //need to get comments before we render the page
+                //Be4 we need to create a add comment form to summit the form it self 
+                // then we could work on the question_up_down end point to like and dislike
+                this.setState({
+                    questionResult: relObj
+                }, () =>{
+                    this.changePage(4)
+                })
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
     changePage(pageNum){
         this.setState({
@@ -82,8 +101,6 @@ class App extends React.Component {
             email: e.target.email.value,
             password: e.target.password.value
         }
-        console.log('this is the userObj', typeof userObj)
-
         axios.get('/user-management/userLogin', {params: userObj})
         .then((response) => {
           console.log('this is the current user =>', response.data)
@@ -97,8 +114,8 @@ class App extends React.Component {
 
         })
         .catch((error) => {
-          console.log("ohh no Pancho un error", error);
-        });
+          console.log("ohh no Pancho un error", error)
+        })
     }
     onQuestionClick(e, q){
         const qObj ={...q}
@@ -140,26 +157,21 @@ class App extends React.Component {
             })
             .catch((error) => {
                 (error) => {
-                    console.log("ohh no Pancho un error", error);
+                    console.log("ohh no Pancho un error", error)
                 }
             })
     }
     shuffle(array) {
-        let currentIndex = array.length,  randomIndex;
+        let currentIndex = array.length,  randomIndex
       
-        // While there remain elements to shuffle.
         while (currentIndex != 0) {
-      
-          // Pick a remaining element.
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex--;
-      
-          // And swap it with the current element.
+          randomIndex = Math.floor(Math.random() * currentIndex)
+          currentIndex--
           [array[currentIndex], array[randomIndex]] = [
-            array[randomIndex], array[currentIndex]];
+            array[randomIndex], array[currentIndex]]
         }
       
-        return array;
+        return array
       }
     switchLoginSingUp(num){
         this.setState({
@@ -171,11 +183,13 @@ class App extends React.Component {
             case 0:
                 return <LoginSignUp singUp={this.singUp} login={this.login} login_signUp={this.state.login_signUp} switchLoginSingUp={this.switchLoginSingUp}/>
             case 1:
-                return <Home key={1} qArr={this.state.qArr} onQuestionClick={this.onQuestionClick}/>
+                return <Home qArr={this.state.qArr} onQuestionClick={this.onQuestionClick}/>
             case 2:
                 return <Question question={this.state.question} answerQuestion={this.answerQuestion} />
             case 3: 
                 return <CreateQuestion addQuestion={this.addQuestion} />
+            case 4:
+                return <QuestionComments questionResult={this.state.questionResult} question={this.state.question}/>
         }
     }
     render(){
