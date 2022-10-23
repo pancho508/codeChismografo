@@ -1,9 +1,9 @@
 var LoginSignUp = (props) => (
     <div className="box">
-        <h1 className="centerH1">
+        <h2 className="centerH1">
             <a onClick={() =>{props.switchLoginSingUp(0)}}>Login</a>  |
-            <a onClick={() =>{props.switchLoginSingUp(1)}}>  Sign up</a>
-        </h1>
+            <a onClick={() =>{props.switchLoginSingUp(1)}}>  Create Account</a>
+        </h2>
         {
             props.login_signUp === 0 ?
             <div>

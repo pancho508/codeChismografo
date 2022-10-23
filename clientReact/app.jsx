@@ -219,7 +219,13 @@ class App extends React.Component {
         return(
             <div>
                 <Header user={this.state.user}  changePage={this.changePage}/>
-                {this.renderSwitch(this.state.page)}
+                <div className="row">
+                    <div className="column side" style={{backgroundColor:'#aaa'}}>Column UNO</div>
+                    <div className="column middle" style={{backgroundColor:'#bbb'}}>
+                        {this.renderSwitch(this.state.page)}
+                    </div>
+                    <div className="column side" style={{backgroundColor:'#ccc'}}>Column DOS</div>
+                </div>
                 <Footer />
             </div>
         )
