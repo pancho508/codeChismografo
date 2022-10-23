@@ -8,19 +8,11 @@ var Question = (props) => {
                 <img src={props.question.imageURL}></img>
                 <h2>Question: {props.question.question}</h2>
                 <p>by: {props.question.createdBy}</p>
-
                 <form className="question" onSubmit={(e) => {
                         props.answerQuestion(e, props.question.uuid)
                     }}>
-                    <input type="radio" id="correctAnswer" name="chosenAnswer" value="correctAnswer" />
-                    <label htmlFor="correctAnswer">{props.question.correctAnswer}</label><br />
-                    <input type="radio" id="wrongAnswer1" name="chosenAnswer" value="wrongAnswer1" />
-                    <label htmlFor="wrongAnswer1">{props.question.wrongAnswer1}</label><br />
-                    <input type="radio" id="wrongAnswer2" name="chosenAnswer" value="wrongAnswer2" />
-                    <label htmlFor="wrongAnswer2">{props.question.wrongAnswer2}</label><br />
-                    <input type="radio" id="wrongAnswer3" name="chosenAnswer" value="wrongAnswer3" />
-                    <label htmlFor="wrongAnswer3">{props.question.wrongAnswer3}</label><br /><br />
-
+                    {props.question.answers.map((el, indx) => <Answer key={indx} answer={el} />)}
+                    <br />
                     <input type="submit" value="Submit" />
                 </form>
                 <br />

@@ -17,13 +17,21 @@ class App extends React.Component {
         this.setUser = this.setUser.bind(this)
         this.singUp = this.singUp.bind(this)
         this.switchLoginSingUp = this.switchLoginSingUp.bind(this)
+        this.shuffle = this.shuffle.bind(this)
         this.renderSwitch = this.renderSwitch.bind(this)
     }
     addQuestion(e){
         e.preventDefault()
         console.log(e.target)
+        var answerObj = [
+            e.target.correctAnswer.value,
+            e.target.wrongAnswer1.value,
+            e.target.wrongAnswer2.value,
+            e.target.wrongAnswer3.value,
+        ]
         var questionObj = {
             question: e.target.question.value,
+            answers: answerObj,
             correctAnswer: e.target.correctAnswer.value,
             wrongAnswer1: e.target.wrongAnswer1.value, 
             wrongAnswer2: e.target.wrongAnswer2.value,
@@ -92,8 +100,19 @@ class App extends React.Component {
           console.log("ohh no Pancho un error", error);
         });
     }
-    onQuestionClick(e, qObj){
+    onQuestionClick(e, q){
+        const qObj ={...q}
         console.log('onQuestionClick invoked', e, qObj)
+        const aArr = [
+            {correct:true, text: qObj.answers[0]},
+            {correct:false, text: qObj.answers[1]},
+            {correct:false, text: qObj.answers[2]},
+            {correct:false, text: qObj.answers[3]}
+        ]
+        console.log('qArr ===>', JSON.stringify(aArr))
+        const mixQArr = this.shuffle(aArr)
+        console.log('mixQArr ===>', mixQArr)
+        qObj.answers = mixQArr
         this.setState({
             question: qObj
         }, () => {
@@ -125,6 +144,23 @@ class App extends React.Component {
                 }
             })
     }
+    shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+      
+        // While there remain elements to shuffle.
+        while (currentIndex != 0) {
+      
+          // Pick a remaining element.
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+      
+          // And swap it with the current element.
+          [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+      
+        return array;
+      }
     switchLoginSingUp(num){
         this.setState({
             login_signUp: num

@@ -109,10 +109,13 @@ User -asked-> Question -contains-> Comment
         like:
         dislike:
         question:
-        correctAnswer:
-        wrongAnswer1:
-        wrongAnswer2:
-        wrongAnswer3:
+        answers: [{correct:true, text:'right'},{correct:false, text:'wrong'},{correct:false, text:'wrong'},{correct:false, text:'wrong'}]
+
+
+        ->correctAnswer:
+        ->wrongAnswer1:
+        ->wrongAnswer2:
+        ->wrongAnswer3:
 
     - Comments:
         uuid:

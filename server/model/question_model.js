@@ -10,6 +10,7 @@ exports.questionCreate = (questionObj) => {
         imageURL:  $imageURL,
         topic: $topic,
         articleLink: $articleLink,
+        answers: $answers,
         like: $like, 
         dislike: $dislike,
         createdBy: $createdBy,
