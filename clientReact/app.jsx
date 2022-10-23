@@ -9,6 +9,7 @@ class App extends React.Component {
             questionResult: null,
             user: null
         }
+        this.addComment = this.addComment.bind(this)
         this.addQuestion = this.addQuestion.bind(this)
         this.answerQuestion = this.answerQuestion.bind(this)
         this.changePage = this.changePage.bind(this)
@@ -50,6 +51,10 @@ class App extends React.Component {
         .catch((error) => {
             console.log("ohh no Pancho un error", error)
         })
+    }
+    addComment(e){
+        e.preventDefault()
+        console.log('cuh addComment inv e', e)
     }
     answerQuestion(e, question_uuid){
         e.preventDefault()
@@ -181,15 +186,32 @@ class App extends React.Component {
     renderSwitch(loc){
         switch(loc){
             case 0:
-                return <LoginSignUp singUp={this.singUp} login={this.login} login_signUp={this.state.login_signUp} switchLoginSingUp={this.switchLoginSingUp}/>
+                return <LoginSignUp 
+                    singUp={this.singUp} 
+                    login={this.login} 
+                    login_signUp={this.state.login_signUp} 
+                    switchLoginSingUp={this.switchLoginSingUp}
+                    />
             case 1:
-                return <Home qArr={this.state.qArr} onQuestionClick={this.onQuestionClick}/>
+                return <Home 
+                    qArr={this.state.qArr} 
+                    onQuestionClick={this.onQuestionClick}
+                    />
             case 2:
-                return <Question question={this.state.question} answerQuestion={this.answerQuestion} />
+                return <Question 
+                    question={this.state.question} 
+                    answerQuestion={this.answerQuestion} 
+                    />
             case 3: 
-                return <CreateQuestion addQuestion={this.addQuestion} />
+                return <CreateQuestion 
+                    addQuestion={this.addQuestion} 
+                    />
             case 4:
-                return <QuestionComments questionResult={this.state.questionResult} question={this.state.question}/>
+                return <QuestionComments 
+                    questionResult={this.state.questionResult} 
+                    question={this.state.question} 
+                    addComment={this.addComment} 
+                    />
         }
     }
     render(){

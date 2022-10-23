@@ -15,7 +15,23 @@ var CreateQuestion = (props) => (
             <label >imageURL:</label><br/>
             <input type="text" id="imageURL" name="imageURL" /><br/>
             <label >topic:</label><br/>
-            <input type="text" id="topic" name="topic" /><br/>            
+            <select>
+                <option value="0">Select Topic:</option>
+                <option value="1">JavaScript</option>
+                <option value="2">Python</option>
+                <option value="3">VueJS</option>
+                <option value="4">ReactJS</option>
+                <option value="5">NodeJS</option>
+                <option value="6">Neo4J</option>
+                <option value="7">MySql</option>
+                <option value="8">Mongo</option>
+                <option value="9">AWS</option>
+                <option value="10">Github Actions</option>
+                <option value="11">Docker</option>
+                <option value="12">Machine Learning</option>
+            </select>
+            <input type="text" id="topic" name="topic" /><br/> 
+            {/* need to remove this            */}
             <label >articleLink:</label><br/>
             <input type="text" id="articleLink" name="articleLink" /><br/>            
 
