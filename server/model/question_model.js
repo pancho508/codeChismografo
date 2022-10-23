@@ -4,7 +4,9 @@ exports.questionCreate = (questionObj) => {
     console.log("b. questionCreate MODEL lookPancho =>", questionObj)
     const session = ormSession()
     return session
-      .run(`CREATE (n: Question {
+      .run(`
+        MATCH (u: User {name: $createdBy})
+        CREATE (u)-[:ASK]->(n: Question {
         uuid: $uuid,
         question: $question,
         imageURL:  $imageURL,
