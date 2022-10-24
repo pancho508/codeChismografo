@@ -16,13 +16,16 @@ index.js -> router.js
 
 ## Things to do
 Start with users and set up simple CRUD operations with MVC
+[] Organize Repo once you have MVP
 
 ### Client- vuejs
+        [] local Storage cookies
         [] Bootstrap / CSS 
             !! Caution. Tried setting up bootstrap directly with cdn config but running into issues with non hook build. Would be wise to set up once I start native build with VueJS
             - add bootstrap for all page components
             - Login/CreateAccount , Home , Question, Question Resolution , Comments
             - (maybe we could add random background color -! high on white tint) )
+        [x] Ranking Column
         [x] Header and Footer on all 
             - Header => Home, CreateQuestion, Logout/login/create
             - Footer => logo, link to github
@@ -34,6 +37,7 @@ Start with users and set up simple CRUD operations with MVC
         [x] Question
 
     --Users: 
+        []  Delete button with functionality
         [x] Create user page
             - INPUT => name, email, password 
             - FORM
@@ -42,6 +46,7 @@ Start with users and set up simple CRUD operations with MVC
             - FORM 
 
     --Questions
+        []  Delete button with functionality
         [] CreateQuestion
             - Need create post to server -addQuestion METHOD 
         [] QuestionComments
@@ -55,37 +60,41 @@ Start with users and set up simple CRUD operations with MVC
             - Form Submit should take you to comment page
 
     --Comments: 
-        [] CreateComment
-        [] Comment page
-            - Rate Question thumb up or down
-            - Comment box 
-                -comment 1 (each has thumb up or down)
-                -comment 2 (each has thumb up or down)
-                - etc
-            - AddCommentButton and NextQuestionButton
+        []  Delete button with functionality
+        [x] CreateComment
+        []  Comment page
+                - Rate Question thumb up or down
+                - Comment box 
+                    -comment 1 (each has thumb up or down)
+                    -comment 2 (each has thumb up or down)
+                    - etc
+                - AddCommentButton and NextQuestionButton
 
 ### Server- express
 Needs; Router, auth(simple), MVC start it up first, 
     TODO 
         [] Need to start building up authentication
             - I could just create a MW function to check the end point with a JWT or we can just create a fun little function
+        [] Implement logger
+        [] better organization, deps injection 
 
     - /Users
         [x] /login
         [x] /create
         [x] /update
-        [x] /put
-        [x] /delelte
+        [x] /read
+        [x] /delete
     - Questions:
-        [] /create
+        [x] /create
+        [x] /answerQuestion
         [] /update
-        [] /put
-        [] /delelte
+        [x] /read
+        [] /delete
     - Comments:
-        [] /create
+        [x] /create
         [] /update
-        [] /put
-        [] /delelte
+        [x] /read
+        [] /delete
 
 ### DB- neo4j 
 ORM; neo4j-driver
@@ -110,16 +119,22 @@ User -asked-> Question -contains-> Comment
         dislike:
         question:
         answers: [{correct:true, text:'right'},{correct:false, text:'wrong'},{correct:false, text:'wrong'},{correct:false, text:'wrong'}]
-
-
-        ->correctAnswer:
-        ->wrongAnswer1:
-        ->wrongAnswer2:
-        ->wrongAnswer3:
+            ->correctAnswer:
+            ->wrongAnswer1:
+            ->wrongAnswer2:
+            ->wrongAnswer3:
 
     - Comments:
         uuid:
         text:
         like:
-        dislike
+        dislike:
+        createBy:
 
+### Deployment Github Actions
+    [] create github workflow actions in yml
+    [] Dockerize app and repo 
+    [] AWS EC2 Deployment
+
+## QUESTIONS ===>
+    [] The comment node is linked both to the user and question node, would it not be best to just make it into a rel with its properties of the node?
