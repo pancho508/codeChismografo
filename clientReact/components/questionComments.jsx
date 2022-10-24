@@ -14,6 +14,7 @@ var QuestionComments = (props) => (
         </div>
         <br />
         <div className="comments">
+            {props.comments.map((el, indx) => <h1 key={indx}>{el.text}</h1>)}
             <div className="card">
                 <h5>Title description, Dec 7, 2017</h5>
                 <p>User Name..</p>

@@ -2,6 +2,7 @@ class App extends React.Component {
     constructor(){
         super()
         this.state = {
+            comments: [],
             login_signUp: 0,
             page : 0,
             qArr : [],
@@ -14,6 +15,7 @@ class App extends React.Component {
         this.addQuestion = this.addQuestion.bind(this)
         this.answerQuestion = this.answerQuestion.bind(this)
         this.changePage = this.changePage.bind(this)
+        this.getComments = this.getComments.bind(this)
         this.getQuestions = this.getQuestions.bind(this)
         this.getUsers = this.getUsers.bind(this)
         this.login = this.login.bind(this)
@@ -23,6 +25,24 @@ class App extends React.Component {
         this.switchLoginSingUp = this.switchLoginSingUp.bind(this)
         this.shuffle = this.shuffle.bind(this)
         this.renderSwitch = this.renderSwitch.bind(this)
+    }
+    addComment(e){
+        e.preventDefault()
+        const commentObj = {
+            ...this.state.questionResult,
+            text: e.target.addComment.value,
+            like: 0,
+            dislike: 0
+        }
+        console.log('cuh addComment inv commentObj', commentObj)
+        axios.post('/user-management/comment', commentObj)
+            .then((res) => {
+                console.log('addQuestion RES =>', res)
+                this.getComments(this.state.questionResult.question_uuid)
+            })
+            .catch((error) => {
+                console.log("ohh no Pancho un error", error)
+            })
     }
     addQuestion(e){
         e.preventDefault()
@@ -54,10 +74,6 @@ class App extends React.Component {
             console.log("ohh no Pancho un error", error)
         })
     }
-    addComment(e){
-        e.preventDefault()
-        console.log('cuh addComment inv e', e)
-    }
     answerQuestion(e, question_uuid){
         e.preventDefault()
         //make axios poser request
@@ -86,6 +102,19 @@ class App extends React.Component {
         this.setState({
             page: pageNum
         })
+    }
+    getComments(qUUID){
+        console.log('this is the qUUID UUID PANCHO', qUUID)
+        axios.get('/user-management/comment', {params: {question_uuid: qUUID}})
+            .then((res) => {
+                console.log('addQuestion RES GET =>', res)
+                this.setState({
+                    comments: res.data
+                })
+            })
+            .catch((error) => {
+                console.log("ohh no Pancho un error", error)
+            })
     }
     getQuestions(){
         axios.get('/user-management/question')
@@ -213,19 +242,20 @@ class App extends React.Component {
                     onQuestionClick={this.onQuestionClick}
                     />
             case 2:
-                return <Question 
-                    question={this.state.question} 
+                return <Question
                     answerQuestion={this.answerQuestion} 
+                    question={this.state.question} 
                     />
             case 3: 
                 return <CreateQuestion 
                     addQuestion={this.addQuestion} 
                     />
             case 4:
-                return <QuestionComments 
-                    questionResult={this.state.questionResult} 
-                    question={this.state.question} 
+                return <QuestionComments
                     addComment={this.addComment} 
+                    comments={this.state.comments}
+                    question={this.state.question} 
+                    questionResult={this.state.questionResult} 
                     />
         }
     }

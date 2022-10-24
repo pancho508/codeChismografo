@@ -6,25 +6,34 @@ exports.commentCreate = (commentObj) => {
     const id = uuid.v4()
     const session = ormSession()
     return session
-      .run(`CREATE (n: Comment {
-        uuid: '${id}',
-        text: $text,
-        like: $like,
-        dislike: $dislike 
-      })`, commentObj)
+      .run(`
+        MATCH (u: User {uuid: $user_uuid}),
+        (q: Question {uuid: $question_uuid})
+        CREATE (u)-[:STATED]->(n: Comment {
+          uuid: '${id}',
+          text: $text,
+          like: $like,
+          dislike: $dislike 
+        })<-[:HAS]-(q)
+      `, commentObj)
       .then(() => session.close())
       //TODO - Need to crate a relationship when creating this comment
 }
 
-exports.commentsGet = (commentObj) => {
-    console.log("b. commentsGet MODEL ======", commentObj)
+exports.commentsGet = (qObj) => {
+    console.log("b. commentsGet MODEL ======", qObj)
     const session = ormSession()
     return session
-      .run('MATCH (a: Comment) return a')
+      .run(`
+        MATCH (q: Question{ uuid: $question_uuid})
+        -[:HAS]->
+        (c: Comment) 
+        return c
+      `, qObj)
       .then((result)=>{
         resArr = []
         result.records.forEach(record => {
-          resArr.push(record.get('a').properties)
+          resArr.push(record.get('c').properties)
         })
         return resArr
       })

@@ -5,7 +5,7 @@ exports.commentCreate = (req, res) => {
     console.log("a. commentCreate controller", req.body)
     commentModel.commentCreate(req.body)
      .then(result => {
-        res.end("commentCreate properly")
+        res.status(201).end()
       })
       .catch(error => {
         res.end('ohh nooo we go into an error')
@@ -13,10 +13,10 @@ exports.commentCreate = (req, res) => {
 }
 
 exports.commentsGet = (req, res) => {
-    console.log(" a. commentsGet controller", req.body)
-    commentModel.commentsGet(req.body)
+    console.log(" a. commentsGet controller", req.query)
+    commentModel.commentsGet(req.query)
       .then(data => {
-        console.log('data in controller ===>', data)
+        console.log('commentsGet controller DATA ===>', data)
         res.end(JSON.stringify(data))
       })
       .catch(error => {
