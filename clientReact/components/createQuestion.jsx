@@ -1,7 +1,7 @@
 var CreateQuestion = (props) => (
     <div>
-        <form className="login" onSubmit={(e) => { props.addQuestion(e) }}>
-            <label >question:</label><br/>
+        <form className="createQuestion" onSubmit={(e) => { props.addQuestion(e) }}>
+            <label >Question:</label><br/>
             <input type="text" id="question" name="question" /><br/>
             <label >Correct Answer Here:</label><br/>
             <input type="text" id="correctAnswer" name="correctAnswer" /><br/><br/>
@@ -12,9 +12,9 @@ var CreateQuestion = (props) => (
             <label >Wrong Answer 3:</label><br/>
             <input type="text" id="wrongAnswer3" name="wrongAnswer3" /><br/><br/>
 
-            <label >imageURL:</label><br/>
+            <label >Image URL:</label><br/>
             <input type="text" id="imageURL" name="imageURL" /><br/>
-            <label >topic:</label><br/>
+            <label >Topic:</label><br/>
             <select>
                 <option value="0">Select Topic:</option>
                 <option value="1">JavaScript</option>

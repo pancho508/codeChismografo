@@ -21,8 +21,8 @@ class App extends React.Component {
         this.login = this.login.bind(this)
         this.onQuestionClick = this.onQuestionClick.bind(this)
         this.setUser = this.setUser.bind(this)
-        this.singUp = this.singUp.bind(this)
-        this.switchLoginSingUp = this.switchLoginSingUp.bind(this)
+        this.signUp = this.signUp.bind(this)
+        this.switchLoginSignUp = this.switchLoginSignUp.bind(this)
         this.shuffle = this.shuffle.bind(this)
         this.renderSwitch = this.renderSwitch.bind(this)
     }
@@ -190,7 +190,7 @@ class App extends React.Component {
             user: userObj
         })
     }
-    singUp(e){
+    signUp(e){
         e.preventDefault()
         const userObj = {
             email: e.target.email.value,
@@ -200,6 +200,7 @@ class App extends React.Component {
         axios.post('/user-management/user', userObj)
             .then((response) => {
               console.log('current user =>', response.data)
+              this.getUsers()
               this.setUser(response.data)
               this.getQuestions()
               this.changePage(1)
@@ -222,7 +223,7 @@ class App extends React.Component {
       
         return array
       }
-    switchLoginSingUp(num){
+    switchLoginSignUp(num){
         this.setState({
             login_signUp: num
         })
@@ -231,10 +232,10 @@ class App extends React.Component {
         switch(loc){
             case 0:
                 return <LoginSignUp 
-                    singUp={this.singUp} 
+                    signUp={this.signUp} 
                     login={this.login} 
                     login_signUp={this.state.login_signUp} 
-                    switchLoginSingUp={this.switchLoginSingUp}
+                    switchLoginSignUp={this.switchLoginSignUp}
                     />
             case 1:
                 return <Home 
@@ -265,13 +266,13 @@ class App extends React.Component {
             <div>
                 <Header user={this.state.user}  changePage={this.changePage}/>
                 <div className="row">
-                    <div className="column side" style={{backgroundColor:'#aaa'}}>
+                    <div className="column side" >
                         <Contributors users={this.state.users} />
                     </div>
-                    <div className="column middle" style={{backgroundColor:'#bbb'}}>
+                    <div className="column middle" >
                         {this.renderSwitch(this.state.page)}
                     </div>
-                    <div className="column side" style={{backgroundColor:'#ccc'}}>Column DOS</div>
+                    <div className="column side" >Column DOS</div>
                 </div>
                 <Footer />
             </div>

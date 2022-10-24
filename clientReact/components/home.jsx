@@ -2,7 +2,7 @@ var Home = (props) => (
     <div>
         <h1>All Questions</h1>
         {props.qArr.map((el, indx) => (
-            <div key={indx}>
+            <div key={indx} className="questionBox">
                 <h2>Question: {el.question}</h2>
                 <h3>Created by: {el.createdBy}</h3>
                 <h4>Topic: {el.topic}</h4>

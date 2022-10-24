@@ -1,8 +1,8 @@
 var LoginSignUp = (props) => (
     <div className="box">
         <h2 className="centerH1">
-            <a onClick={() =>{props.switchLoginSingUp(0)}}>Login</a>  |
-            <a onClick={() =>{props.switchLoginSingUp(1)}}>  Create Account</a>
+            <a onClick={() =>{props.switchLoginSignUp(0)}}>Login</a>  |
+            <a onClick={() =>{props.switchLoginSignUp(1)}}>  Create Account</a>
         </h2>
         {
             props.login_signUp === 0 ?
@@ -17,7 +17,7 @@ var LoginSignUp = (props) => (
             </div>
             :
             <div>
-                <form className="login" onSubmit={(e) => {props.singUp(e)}}>
+                <form className="login" onSubmit={(e) => {props.signUp(e)}}>
                     <label >Name:</label><br/>
                     <input type="text" id="name" name="name" /><br/>
                     <label >E-mail:</label><br/>

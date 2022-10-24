@@ -1,10 +1,15 @@
 var QuestionComments = (props) => (
     <div>
         {console.log("QuestionComments props", props)}
-        <h1>Solved Question: {props.questionResult.correct ? "noIce! You got it right!" : "opps, better luck next time"}</h1>
-        <h2>Article Link: {props.question.articleLink}</h2>
+        <h1>Question Results: </h1>
+        <h1>{props.questionResult.correct ? "noIce! You got it right!" : "opps, better luck next time"}</h1>
+        <br/>
+        <h2>Would you like to know more?</h2>
+        <h3>{props.question.articleLink}</h3>
+        <br/>
         <h3>likes: {props.question.like} dislikes: {props.question.dislike}</h3>
         <h1>Comments </h1>
+        <br/>
         <div className="addComment">
             <form onSubmit={(e) => {props.addComment(e)}}>
                 <label htmlFor="addComment">Add A Comment...</label><br/>
