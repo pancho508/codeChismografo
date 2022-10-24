@@ -1,16 +1,21 @@
 var QuestionComments = (props) => (
-    <div>
-        {console.log("QuestionComments props", props)}
+    <div className="mainComment">
         <h1>Question Results: </h1>
         <h1>{props.questionResult.correct ? "noIce! You got it right!" : "opps, better luck next time"}</h1>
         <br/>
         <h2>Would you like to know more?</h2>
-        <h3>{props.question.articleLink}</h3>
+        <a href={props.question.articleLink}><h2>Click Me!!</h2></a>
         <br/>
-        <h3>likes: {props.question.like} dislikes: {props.question.dislike}</h3>
-        <h1>Add Comment</h1>
+        <button className="likeBTN btn" id="green">
+            <i className="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>
+            {props.question.like}
+        </button>
+        <button className="dislikeBTN btn" id="red">
+            <i className="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>
+            {props.question.dislike}
+        </button>
         <br/>
-        <div className="addComment">
+        <div className="addComments">
             <form onSubmit={(e) => {props.addComment(e)}}>
                 <label htmlFor="addComment">Add A Comment...</label><br/>
                 <input type="text" id="addComment" name="addComment" placeholder="Add A Comment..." /><br/><br/>
@@ -18,13 +23,21 @@ var QuestionComments = (props) => (
             </form>
         </div>
         <br />
-        <h1>All Comments</h1>
-        <div className="comments">
+        <div className="allComments">
+            <h1>All Comments</h1>
             {props.comments.map((el, indx) => (
-                    <div className="card" key={indx}>
+                    <div className="commentCard" key={indx}>
                         <h5>{el.date}</h5>
                         <p>{el.text}</p>
-                        <h5>{el.createdBy}</h5>
+                        <h5>by: {el.createdBy}</h5>
+                        <button className="likeBTN btn" id="green">
+                            <i className="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>
+                            {props.question.like}
+                        </button>
+                        <button className="dislikeBTN btn" id="red">
+                            <i className="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>
+                            {props.question.dislike}
+                        </button>
                     </div>
             ))}
     

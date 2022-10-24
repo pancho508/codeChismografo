@@ -3,20 +3,20 @@ var Question = (props) => {
     if(props.question){
         return(
             <div className="questionare">
-                <h1>Single Question <br/>{props.question.uuid}</h1>
-                <h3>{props.question.topic}</h3>
+                <h1>Single Question</h1>
+                <h3>Topics: {props.question.topic}</h3>
+                <p>by: {props.question.createdBy}</p>
                 <img src={props.question.imageURL}></img>
                 <h2>Question: {props.question.question}</h2>
-                <p>by: {props.question.createdBy}</p>
                 <form className="question" onSubmit={(e) => {
                         props.answerQuestion(e, props.question.uuid)
                     }}>
+                    <label className="choose" htmlFor="question">Choose one Answer</label><br /><br />
                     {props.question.answers.map((el, indx) => <Answer key={indx} answer={el} />)}
                     <br />
                     <input className="questionSubmit" type="submit" value="Submit" />
                 </form>
                 <br />
-                <a href={props.question.articleLink} >{props.question.articleLink}</a>
                 {/*  
                     WARNING!!
                     We do not load the comments on this page it will be on the solve question page \
