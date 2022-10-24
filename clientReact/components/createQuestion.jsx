@@ -29,8 +29,7 @@ var CreateQuestion = (props) => (
                 <option value="Docker">Docker</option>
                 <option value="MachineLearning">Machine Learning</option>
             </select><br/> 
-            {/* need to remove this            */}
-            <label >articleLink:</label><br/>
+            <label >Article Link:</label><br/>
             <input type="text" id="articleLink" name="articleLink" /><br/>            
 
             <input type="submit" value="Submit" />

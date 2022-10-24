@@ -40,8 +40,6 @@ var QuestionComments = (props) => (
                         </button>
                     </div>
             ))}
-    
         </div>
-        {console.log('questionsComments props', props)}
     </div>
 )

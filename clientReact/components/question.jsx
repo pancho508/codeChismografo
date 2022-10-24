@@ -17,15 +17,6 @@ var Question = (props) => {
                     <input className="questionSubmit" type="submit" value="Submit" />
                 </form>
                 <br />
-                {/*  
-                    WARNING!!
-                    We do not load the comments on this page it will be on the solve question page \
-                    TODO 
-                        build comments page 
-                        we can use the uuid on the question to query the db for the comments associated to it.
-                        we add comment form. 
-                        method to add and get:id comment
-                */}
             </div>
         )
     }else{

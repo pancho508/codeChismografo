@@ -28,7 +28,6 @@ exports.userCreate = (req, res) => {
 exports.usersGet = (req, res) => {
     userModel.usersGet(req.body)
       .then(data => {
-        // console.log('data in controller ===>', data)
         res.end(JSON.stringify(data))
       })
       .catch(error => {
@@ -40,7 +39,6 @@ exports.userLogin = (req, res) => {
   console.log('userLogin look Pancho ===>', req.query)
   userModel.userLogin(req.query)
     .then(data => {
-      // check that the password maches the one given 
       console.log(req.query.password, " vs ", data[0].password)
       if(req.query.password === data[0].password){
         data[0].auth = true

@@ -42,7 +42,6 @@ exports.questionCreate = (questionObj) => {
         console.log('questioCreate Model ERROR => ', err)
         return err
       })
-      //TODO - Need to crate a relationship when creating this question
 }
 
 exports.questionsGet = (questionObj) => {
@@ -68,9 +67,6 @@ exports.questionsGet = (questionObj) => {
 
 exports.questionEdit = (questionObj) => {
   console.log("b. questionEdit MODEL", questionObj)
-    //for now I omitted text since everything in the question node is subject to change including the text, so for now text can't be changed
-
-    //ideally we want to use some sort of UUID
   const session = ormSession()
   return session
     .run(`MATCH (n: Question {uuid: $uuid})

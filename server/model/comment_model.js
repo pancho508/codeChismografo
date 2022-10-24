@@ -19,7 +19,6 @@ exports.commentCreate = (commentObj) => {
         })<-[:HAS]-(q)
       `, commentObj)
       .then(() => session.close())
-      //TODO - Need to crate a relationship when creating this comment
 }
 
 exports.commentsGet = (qObj) => {
@@ -43,14 +42,10 @@ exports.commentsGet = (qObj) => {
         session.close()
         return resArr
       })
-
 }
 
 exports.commentEdit = (commentObj) => {
   console.log("b. commentEdit MODEL", commentObj)
-    //for now I omitted text since everything in the comment node is subject to change including the text, so for now text can't be changed
-
-    //ideally we want to use some sort of UUID
   const session = ormSession()
   return session
     .run(`MATCH (n: Comment {uuid: $uuid})

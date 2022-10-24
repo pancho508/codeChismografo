@@ -78,7 +78,6 @@ class App extends React.Component {
     }
     answerQuestion(e, question_uuid){
         e.preventDefault()
-        //make axios poser request
         const relObj = {
             user_uuid: this.state.user.uuid,
             question_uuid: question_uuid,
@@ -194,7 +193,6 @@ class App extends React.Component {
         })
     }
     signUp(e){
-        e.preventDefault()
         const userObj = {
             email: e.target.email.value,
             name: e.target.name.value,

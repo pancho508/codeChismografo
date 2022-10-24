@@ -19,6 +19,7 @@ Start with users and set up simple CRUD operations with MVC
 [] Organize Repo once you have MVP
 
 ### Client- vuejs
+        [] create color active on login create user and options sub menu on home
         [] local Storage cookies
         [] Bootstrap / CSS 
             !! Caution. Tried setting up bootstrap directly with cdn config but running into issues with non hook build. Would be wise to set up once I start native build with VueJS

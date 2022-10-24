@@ -1,7 +1,6 @@
 const ormSession = require("../db/index.js")
 
 exports.userCreate = (userObj) => {
-    //convierte este query a que inserte el usuario
     const session = ormSession()
     return session
       .run(`CREATE (n: User {
@@ -61,8 +60,6 @@ exports.userLogin = (userObj) => {
 }
 
 exports.userEdit = (userObj) => {
-  // Ten cuidado si usas el nombre como unico tendras que reflejar eso en el schema
-  // uuid una buena idea?
   const session = ormSession()
   return session
     .run(`MATCH (n: User {uuid: $uuid})

@@ -3,7 +3,7 @@ var Contributors = (props) => {
         return (
             <div className="playerslist">
                 <div className="table">
-                    <h3>October's Top Contributors</h3>
+                    <h1>October's Top Contributors</h1>
                 </div>
                 <div className="list">
                     {props.users.map((user, index) => (
