@@ -1,13 +1,11 @@
-const uuid = require('uuid')
 const ormSession = require("../db/index.js")
 
 exports.userCreate = (userObj) => {
     //convierte este query a que inserte el usuario
-    const id = uuid.v4()
     const session = ormSession()
     return session
       .run(`CREATE (n: User {
-        uuid: "${id}",
+        uuid: $uuid,
         name: $name, 
         email: $email, 
         password: $password, 

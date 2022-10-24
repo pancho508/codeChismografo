@@ -8,7 +8,7 @@ var QuestionComments = (props) => (
         <h3>{props.question.articleLink}</h3>
         <br/>
         <h3>likes: {props.question.like} dislikes: {props.question.dislike}</h3>
-        <h1>Comments </h1>
+        <h1>Add Comment</h1>
         <br/>
         <div className="addComment">
             <form onSubmit={(e) => {props.addComment(e)}}>
@@ -18,13 +18,16 @@ var QuestionComments = (props) => (
             </form>
         </div>
         <br />
+        <h1>All Comments</h1>
         <div className="comments">
-            {props.comments.map((el, indx) => <h1 key={indx}>{el.text}</h1>)}
-            <div className="card">
-                <h5>Title description, Dec 7, 2017</h5>
-                <p>User Name..</p>
-                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-            </div>
+            {props.comments.map((el, indx) => (
+                    <div className="card" key={indx}>
+                        <h5>{el.date}</h5>
+                        <p>{el.text}</p>
+                        <h5>{el.createdBy}</h5>
+                    </div>
+            ))}
+    
         </div>
         {console.log('questionsComments props', props)}
     </div>

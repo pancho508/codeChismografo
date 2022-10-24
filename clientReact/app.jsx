@@ -32,7 +32,9 @@ class App extends React.Component {
             ...this.state.questionResult,
             text: e.target.addComment.value,
             like: 0,
-            dislike: 0
+            dislike: 0,
+            createdBy: this.state.user.name,
+            date: new Date()
         }
         console.log('cuh addComment inv commentObj', commentObj)
         axios.post('/user-management/comment', commentObj)
@@ -182,6 +184,7 @@ class App extends React.Component {
         this.setState({
             question: qObj
         }, () => {
+            this.getComments(qObj.uuid)
             this.setState({page:2})
         })
     }

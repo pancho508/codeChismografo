@@ -13,7 +13,9 @@ exports.commentCreate = (commentObj) => {
           uuid: '${id}',
           text: $text,
           like: $like,
-          dislike: $dislike 
+          dislike: $dislike,
+          createdBy: $createdBy,
+          date: $date 
         })<-[:HAS]-(q)
       `, commentObj)
       .then(() => session.close())

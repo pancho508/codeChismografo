@@ -1,12 +1,18 @@
+const uuid = require('uuid')
+
 const userModel = require("../model/user_model.js")
+
 // console.log("3. this is the userModel", userModel)
 
 exports.userCreate = (req, res) => {
+    const id = uuid.v4()
+
     const userObj = {
         ...req.body, 
         sprintScore: 0,
         totalScore: 0,
         validated: false,
+        uuid: id
     }
     userModel.userCreate(userObj)
      .then(empty => {
@@ -14,6 +20,7 @@ exports.userCreate = (req, res) => {
         res.end(JSON.stringify(userObj))
       })
       .catch(error => {
+        console.log(error)
         res.end('ohh nooo we go into an error')
       })
 }
