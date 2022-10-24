@@ -7,13 +7,15 @@ class App extends React.Component {
             qArr : [],
             question : null,
             questionResult: null,
-            user: null
+            user: null,
+            users: []
         }
         this.addComment = this.addComment.bind(this)
         this.addQuestion = this.addQuestion.bind(this)
         this.answerQuestion = this.answerQuestion.bind(this)
         this.changePage = this.changePage.bind(this)
         this.getQuestions = this.getQuestions.bind(this)
+        this.getUsers = this.getUsers.bind(this)
         this.login = this.login.bind(this)
         this.onQuestionClick = this.onQuestionClick.bind(this)
         this.setUser = this.setUser.bind(this)
@@ -96,6 +98,18 @@ class App extends React.Component {
                 console.error('pancho you go an error', err)
             })
     }
+    getUsers(){
+        axios.get('/user-management/user')
+            .then((res) => {
+                console.log('getUsers RES pancho', res)
+                this.setState({
+                    users: res.data
+                })
+            })
+            .catch((err)=>{
+                console.error('pancho you go an error', err)
+            })
+    }
     login(e){
         //should hit the server and query the db
         //Auth the user
@@ -110,6 +124,7 @@ class App extends React.Component {
         .then((response) => {
           console.log('this is the current user =>', response.data)
           if(response.data.auth === true){
+            this.getUsers()
             this.setUser(response.data)
             this.getQuestions()
             this.changePage(1)
@@ -220,7 +235,9 @@ class App extends React.Component {
             <div>
                 <Header user={this.state.user}  changePage={this.changePage}/>
                 <div className="row">
-                    <div className="column side" style={{backgroundColor:'#aaa'}}>Column UNO</div>
+                    <div className="column side" style={{backgroundColor:'#aaa'}}>
+                        <Contributors users={this.state.users} />
+                    </div>
                     <div className="column middle" style={{backgroundColor:'#bbb'}}>
                         {this.renderSwitch(this.state.page)}
                     </div>
