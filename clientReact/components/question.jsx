@@ -2,8 +2,8 @@ var Question = (props) => {
     console.log('question props', props)
     if(props.question){
         return(
-            <div>
-                <h1>Single Question {props.question.uuid}</h1>
+            <div className="questionare">
+                <h1>Single Question <br/>{props.question.uuid}</h1>
                 <h3>{props.question.topic}</h3>
                 <img src={props.question.imageURL}></img>
                 <h2>Question: {props.question.question}</h2>
@@ -13,7 +13,7 @@ var Question = (props) => {
                     }}>
                     {props.question.answers.map((el, indx) => <Answer key={indx} answer={el} />)}
                     <br />
-                    <input type="submit" value="Submit" />
+                    <input className="questionSubmit" type="submit" value="Submit" />
                 </form>
                 <br />
                 <a href={props.question.articleLink} >{props.question.articleLink}</a>

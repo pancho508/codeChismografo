@@ -231,15 +231,45 @@ input {
 /* Create A Question CSS */
 
 .createQuestion {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
+  padding: 1em 3em 2em 3em;
   text-align: center;
-  background-color: white;
+  margin: 0em auto;
+  margin-top: 10vh;
+  position: relative;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
+/* Answer A Question CSS */
 
+.questionare {
+  padding: 1em 3em 2em 3em;
+  text-align: center;
+  margin: 0em auto;
+  margin-top: 10vh;
+  position: relative;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.question {
+  display: flexbox;
+  text-align: left;
+
+  padding: 1em 3em 2em 3em;
+  margin: 0em auto;
+  margin-top: 10vh;
+  position: relative;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.questionSubmit {
+  margin-left: 30%;
+}
 
 
 
