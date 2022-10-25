@@ -207,6 +207,8 @@ class App extends React.Component {
               this.setUser(response.data)
               this.getQuestions()
               this.changePage(1)
+              // window.localStorage.setItem('secreto', 'byJoanSebastian')
+              // window.localStorage.getItem('secreto')
             })
             .catch((error) => {
                 (error) => {
