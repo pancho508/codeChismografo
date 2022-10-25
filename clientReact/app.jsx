@@ -158,6 +158,8 @@ class App extends React.Component {
             this.setUser(response.data)
             this.getQuestions()
             this.changePage(1)
+            // window.localStorage.setItem('secreto', 'byJoanSebastian')
+            // window.localStorage.getItem('secreto')
           } else {
             alert('Login Falied')
           }
@@ -273,7 +275,7 @@ class App extends React.Component {
                     <div className="column middle" >
                         {this.renderSwitch(this.state.page)}
                     </div>
-                    <div className="column side" >Column DOS</div>
+                    <div className="column side" >Under Construction</div>
                 </div>
                 <Footer />
             </div>
