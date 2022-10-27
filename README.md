@@ -17,6 +17,14 @@ index.js -> router.js
 ## Things to do
 Start with users and set up simple CRUD operations with MVC
 [] Organize Repo once you have MVP
+[] UNIT Testing with Jest
+[] E2E Testing with cypress 
+
+### Cypress E2E Tests
+    [] Simple Hello World integration
+    [] Stub tests
+    [] Static tests
+    [] Dynamic tests
 
 ### Client- vuejs
         [] create color active on login create user and options sub menu on home
